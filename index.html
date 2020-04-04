@@ -1,7 +1,127 @@
 <!DOCTYPE html>
 <html>
-    <header><title>Subfix -- Fix your subtitle</title></header>
-    <body>
-        Coming up!
-    </body>
+ <head>
+    <meta charset="utf-8">
+    <title>SubFix</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	
+	<script src="lib/jquery-2.0.3.min.js"></script>
+	<script src="lib/bootstrap.min.js"></script>
+	<script src="src/Timestamp.js"></script>
+	<script src="src/helper.js"></script>
+	<script src="src/main.js"></script>
+<style>
+
+	.message {
+		padding: 15px 20px;
+		color: #777;
+		background-color: #fafafa;
+		border-bottom: 1px solid #e5e5e5;
+	}
+	  
+	.header{
+		padding: 15px 40px;
+	}
+	  
+	p.padded
+	{
+		padding: 15px 0px;
+	}
+ 
+</style>
+	
+	
+ </head>
+   
+ <body onload="init()">
+	 <div class="header">
+		 <div class="container">
+			<h1><strong>Sub</strong><i>Fix</i></h1>
+		 </div>
+	 </div>
+	 <div class="message">
+		 <div class="container">
+			This application lets you adjust timelag in a text-based subtitle file (SRT) and to merge two subtitle files into one
+		 </div>
+	 </div>
+	
+	
+	<div class="container">
+	
+		<table class="table">
+			<tr>
+				<td style="height:100%; width:49.5%; border-radius: 10px; padding:10px 0px;">
+				<div class="panel panel-default" style="border: 1px solid #b6b1bf; height:100%;">
+					<div class="panel-heading" style="background: #474949; color:white; border-bottom: 1px solid #b6b1bf;">Adjust timelag</div>
+					<div class="panel-body">
+						
+						Please specify timelag value you want to add/substract
+						<fieldset>
+							<div class="form-group">
+							  <label for="subFile">Choose subtitle file</label>
+							  <input type="file" id="subFile">
+							</div>
+							
+							<div class="form-group">
+							  <label for="delayValue">Add timelag in 10th of a second</label>
+							  <input type="text" class="form-control" id="delayValue" >
+							  <p class="help-block"><i>e.g. if you want to add 2 seconds type in 20</i></p>
+							</div>
+							
+							<button id='btnConvert' class="btn btn-default" onclick="adjustTimelag();">Add Timelag</button>
+							
+						</fieldset>
+						
+					</div>
+					</div>
+				
+				</td>
+				<td style="vertical-align:middle; width:1%;"/>
+				<td style="height:100%; width:49.5%; border-radius: 10px; padding:10px 0px;">
+				
+				<div class="panel panel-default" style="border: 1px solid #b6b1bf; height:100%;">
+					<div class="panel-heading" style="background: #474949; color:white; border-bottom: 1px solid #b6b1bf;">Merge files</div>
+					<div class="panel-body">
+					
+						Please specify the file and the corresponding timelag value
+						<fieldset>
+							<div class="form-group">
+							  <label for="subFileToJoin1">Choose subtitle file 1</label>
+							  <input type="file" id="subFileToJoin1">
+							</div>
+							
+							<div class="form-group">
+							  <label for="SubFile1Delay">Add timelag in 10th of a second</label>
+							  <input type="text" class="form-control" id="SubFile1Delay" >
+							  <p class="help-block"><i>e.g. if you want to add 2 seconds type in 20</i></p>
+							</div>
+							
+							<div class="form-group">
+							  <label for="subFileToJoin2">Choose subtitle file 2</label>
+							  <input type="file" id="subFileToJoin2">
+							</div>
+							
+							<div class="form-group">
+							  <label for="delayValue">Add timelag in 10th of a second</label>
+							  <input type="text" class="form-control" id="delayValueToJoin" >
+							  <p class="help-block"><i>e.g. if you want to add 2 seconds type in 20</i></p>
+							</div>
+							
+							<button id='btnJoin' class="btn btn-default" onclick="merge();">Merge</button>
+						
+						</fieldset>
+					
+					</div>
+				</div>
+				</td>
+			</tr>
+		</table>
+		
+		<div id='messageBoard' class="alert" style="display:none"></div>
+		
+	</div>
+	
+	
+	
+ </body>
 </html>
